@@ -1,563 +1,279 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Жанна Федорина — holistic практик</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Жанна Федорина — Краниосакральная биодинамика | Рейки | Нумерология</title>
 
-        body {
-            background: #faf9f6;
-            color: #2d2d2a;
-            line-height: 1.5;
-        }
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,BlinkMacSystemFont,sans-serif}
+body{background:#faf9f6;color:#2d2d2a;line-height:1.6}
+.container{max-width:1100px;margin:auto;padding:20px}
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem;
-        }
+h1,h2,h3{color:#1f3f32}
+.section{margin:60px 0}
+.btn{
+display:inline-block;
+background:#1f3f32;
+color:#fff;
+padding:14px 28px;
+border-radius:40px;
+text-decoration:none;
+margin-top:20px;
+transition:.3s
+}
+.btn:hover{background:#305f4a}
 
-        /* Шапка */
-        .hero {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
+.hero{
+display:flex;
+flex-wrap:wrap;
+align-items:center;
+gap:40px
+}
+.hero img{
+width:220px;
+height:220px;
+border-radius:50%;
+object-fit:cover
+}
+.hero-text{flex:1}
+.tags{margin:20px 0;display:flex;flex-wrap:wrap;gap:10px}
+.tags span{
+background:#e4f0ea;
+padding:6px 16px;
+border-radius:20px;
+font-size:14px
+}
 
-        .hero-avatar {
-            flex: 0 0 200px;
-        }
+.services{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px
+}
+.card{
+background:#fff;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,.05);
+display:flex;
+flex-direction:column
+}
+.card img{width:100%;height:200px;object-fit:cover}
+.card-content{padding:20px;flex:1;display:flex;flex-direction:column}
+.price{font-weight:700;margin:10px 0;color:#b8763c}
 
-        .hero-avatar img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 50%;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-        }
+.slider{
+display:flex;
+overflow-x:auto;
+scroll-snap-type:x mandatory;
+gap:20px
+}
+.slide{
+flex:0 0 100%;
+scroll-snap-align:start;
+background:#fff;
+padding:25px;
+border-radius:20px;
+box-shadow:0 5px 15px rgba(0,0,0,.05)
+}
+.slide img{
+width:80px;
+height:80px;
+border-radius:50%;
+object-fit:cover;
+margin-bottom:15px
+}
 
-        .hero-text h1 {
-            font-size: 2.8rem;
-            font-weight: 400;
-            letter-spacing: -0.5px;
-            color: #2c4a3b;
-            margin-bottom: 0.5rem;
-        }
+.docs img{
+flex:0 0 100%;
+scroll-snap-align:start;
+border-radius:20px;
+max-height:600px;
+object-fit:contain;
+background:#fff
+}
 
-        .hero-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem 1.5rem;
-            margin: 1.2rem 0 1.2rem;
-        }
+.contacts{
+background:#fff;
+padding:30px;
+border-radius:30px;
+box-shadow:0 5px 15px rgba(0,0,0,.05)
+}
 
-        .hero-tags span {
-            background: #e5f0ea;
-            color: #1e3b2f;
-            padding: 0.3rem 1.2rem;
-            border-radius: 40px;
-            font-weight: 500;
-            font-size: 1rem;
-        }
+.footer{
+text-align:center;
+margin:40px 0;
+font-size:14px;
+color:#777
+}
 
-        .hero-quote {
-            font-size: 1.2rem;
-            border-left: 4px solid #b3cfc2;
-            padding-left: 1.5rem;
-            color: #3e4f47;
-            max-width: 650px;
-            margin-top: 1rem;
-        }
-
-        /* Заголовки секций */
-        .section-title {
-            font-size: 2.2rem;
-            font-weight: 350;
-            color: #2c4a3b;
-            margin-bottom: 2rem;
-            border-bottom: 2px solid #d4e0da;
-            padding-bottom: 0.5rem;
-        }
-
-        /* Карточки услуг */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 2rem;
-            margin: 2.5rem 0;
-        }
-
-        .service-card {
-            background: white;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 8px 18px rgba(0, 20, 10, 0.05);
-            transition: all 0.2s;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .service-card:hover {
-            box-shadow: 0 12px 25px rgba(44, 74, 59, 0.1);
-        }
-
-        .service-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            background: #dbe9e2;
-        }
-
-        .service-content {
-            padding: 1.5rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .service-title {
-            font-size: 1.5rem;
-            font-weight: 500;
-            color: #1d3f30;
-            margin-bottom: 0.3rem;
-        }
-
-        .service-price {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #b8763c;
-            margin: 0.5rem 0 1rem;
-        }
-
-        .service-desc {
-            color: #3e4e46;
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-        }
-
-        .service-desc ul {
-            margin-top: 0.5rem;
-            padding-left: 1.2rem;
-        }
-
-        .service-desc li {
-            margin-bottom: 0.2rem;
-        }
-
-        /* блок доверия + отзывы */
-        .trust-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2.5rem;
-            margin: 3rem 0;
-            background: #f0f5f2;
-            border-radius: 40px;
-            padding: 2rem 2rem;
-        }
-
-        .trust-why {
-            flex: 1 1 280px;
-        }
-
-        .trust-why h3 {
-            font-size: 1.8rem;
-            font-weight: 400;
-            color: #1a3a2b;
-            margin-bottom: 1.5rem;
-        }
-
-        .trust-why ul {
-            list-style: none;
-        }
-
-        .trust-why li {
-            margin-bottom: 1rem;
-            padding-left: 2rem;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%232c4a3b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>') left center no-repeat;
-            background-size: 1.2rem;
-            font-size: 1.1rem;
-        }
-
-        .testimonials {
-            flex: 2 1 500px;
-        }
-
-        .testimonials h3 {
-            font-size: 1.8rem;
-            font-weight: 400;
-            color: #1a3a2b;
-            margin-bottom: 1.5rem;
-        }
-
-        /* слайдер отзывов на чистом CSS */
-        .slider {
-            position: relative;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .slides {
-            display: flex;
-            overflow-x: hidden;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
-            border-radius: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .slide {
-            flex: 1 0 100%;
-            scroll-snap-align: start;
-            background: white;
-            padding: 1.5rem;
-            min-height: 250px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            border-radius: 30px;
-        }
-
-        .slide img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 1rem;
-            border: 3px solid #b3cfc2;
-        }
-
-        .slide p {
-            font-style: italic;
-            color: #2f453b;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .slide .author {
-            font-weight: 600;
-            color: #b8763c;
-            text-align: right;
-        }
-
-        .slider-nav {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .slider-nav a {
-            width: 40px;
-            height: 8px;
-            background: #cbd9d2;
-            border-radius: 8px;
-            display: block;
-            transition: 0.2s;
-        }
-
-        .slider-nav a:hover,
-        .slider-nav a.active {
-            background: #2c4a3b;
-        }
-
-        /* контакты */
-        .contacts {
-            background: #ffffffdd;
-            border-radius: 48px;
-            padding: 2rem 2rem;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
-            margin-top: 2rem;
-        }
-
-        .contacts-left h3 {
-            font-size: 2rem;
-            font-weight: 400;
-            color: #1e3f30;
-            margin-bottom: 0.5rem;
-        }
-
-        .contacts-left p {
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
-        }
-
-        .contacts-left a {
-            text-decoration: none;
-            color: #2d4f3d;
-            font-weight: 500;
-            border-bottom: 1px dotted transparent;
-            transition: border-color 0.2s;
-        }
-
-        .contacts-left a:hover {
-            border-bottom: 1px dotted #b8763c;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 1.2rem;
-            margin-top: 1rem;
-        }
-
-        .social-icons a {
-            display: inline-block;
-            width: 48px;
-            height: 48px;
-            background: #e4f0ea;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s;
-        }
-
-        .social-icons a:hover {
-            background: #c6ddd2;
-        }
-
-        .social-icons img {
-            width: 26px;
-            height: 26px;
-            filter: brightness(0.2) invert(0.2);
-        }
-
-        .contacts-right img {
-            max-width: 200px;
-            border-radius: 30px;
-            opacity: 0.8;
-        }
-
-        /* мелкие правки */
-        .footer-note {
-            text-align: center;
-            margin-top: 3rem;
-            font-size: 0.9rem;
-            color: #7d948b;
-        }
-
-        @media (max-width: 700px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-            }
-            .hero-quote {
-                border-left: none;
-                border-top: 4px solid #b3cfc2;
-                padding-top: 1rem;
-                padding-left: 0;
-            }
-            .contacts {
-                flex-direction: column;
-                gap: 2rem;
-                text-align: center;
-            }
-            .social-icons {
-                justify-content: center;
-            }
-        }
-    </style>
+@media(max-width:768px){
+.hero{flex-direction:column;text-align:center}
+.hero img{width:180px;height:180px}
+}
+</style>
 </head>
+
 <body>
-    <div class="container">
-        <!-- БЛОК 1: ЗНАКОМСТВО -->
-        <div class="hero">
-            <div class="hero-avatar">
-                <!-- сюда фото "ебало жанны" -->
-                <img src="/images/zhanna-face.jpg" alt="Жанна Федорина">
-            </div>
-            <div class="hero-text">
-                <h1>Жанна Федорина</h1>
-                <div class="hero-tags">
-                    <span>Краниосакральная биодинамика</span>
-                    <span>Мастер РейКи</span>
-                    <span>Нумеролог</span>
-                    <span>Квантовый психолог</span>
-                </div>
-                <div class="hero-quote">
-                    Мой целостный подход к человеку, как к многомерной структуре (тело–Душа–Дух) позволяет разрешить вопросы на уровне тела, личности (эго) и Души.
-                </div>
-            </div>
-        </div>
+<div class="container">
 
-        <!-- БЛОК 2: УСЛУГИ -->
-        <h2 class="section-title">Услуги и тарифы</h2>
-        <div class="services-grid">
-            <!-- Биодинамика -->
-            <div class="service-card">
-                <img class="service-img" src="/images/banner-biodinamika.jpg" alt="Краниосакральная биодинамика">
-                <div class="service-content">
-                    <div class="service-title">Краниосакральная биодинамика</div>
-                    <div class="service-price">3 300 ₽</div>
-                    <div class="service-desc">
-                        Офлайн и онлайн.<br>
-                        🌿 Когда тело правит само себя. Мягкая техника, восстанавливающая естественные ритмы. Хронические боли уходят, возвращается энергия.
-                    </div>
-                </div>
-            </div>
-            <!-- Квантовая психология -->
-            <div class="service-card">
-                <img class="service-img" src="/images/banner-psy.jpg" alt="Квантовая психология">
-                <div class="service-content">
-                    <div class="service-title">Квантовая психология</div>
-                    <div class="service-price">2 500 ₽</div>
-                    <div class="service-desc">
-                        Консультация и курсовое сопровождение.<br>
-                        Инструменты: нейрографика, МАК карты, энергопрактики.
-                    </div>
-                </div>
-            </div>
-            <!-- Нумерология -->
-            <div class="service-card">
-                <img class="service-img" src="/images/banner-numerology.jpg" alt="Нумерология">
-                <div class="service-content">
-                    <div class="service-title">Нумерология</div>
-                    <div class="service-price">2 000 – 7 000 ₽</div>
-                    <div class="service-desc">
-                        Консультация по запросу:
-                        <ul>
-                            <li>нумерология здоровья</li>
-                            <li>кармическая родология</li>
-                            <li>детская нумерология</li>
-                            <li>нумерология отношений</li>
-                            <li>прогностическая нумерология</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- Рейки -->
-            <div class="service-card">
-                <img class="service-img" src="/images/banner-reiki.jpg" alt="РейКи">
-                <div class="service-content">
-                    <div class="service-title">Сеансы РейКи</div>
-                    <div class="service-price">3 000 – 5 000 ₽</div>
-                    <div class="service-desc">
-                        Диагностика, энергокоррекция.<br>
-                        Универсальный метод, исцеляющий тело и психику, приносящий глубокую удовлетворённость.
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- HERO -->
+<section class="section hero">
+<img src="images/1.jpg" alt="Жанна Федорина">
+<div class="hero-text">
+<h1>Жанна Федорина</h1>
+<div class="tags">
+<span>Краниосакральная биодинамика</span>
+<span>Мастер РейКи</span>
+<span>Нумеролог</span>
+<span>Квантовый психолог</span>
+</div>
+<p>
+Мой целостный подход к человеку, как к многомерной структуре (Тело – Душа – Дух)
+позволяет разрешить вопросы на уровне тела, личности и Души.
+</p>
+<a class="btn" href="https://t.me/Zanna_KSBD" target="_blank">Записаться на консультацию</a>
+</div>
+</section>
 
-        <!-- БЛОК 3: ДОВЕРИЕ (Почему я + отзывы) -->
-        <div class="trust-row">
-            <div class="trust-why">
-                <h3>Почему стоит прийти ко мне?</h3>
-                <ul>
-                    <li>Индивидуальный подход</li>
-                    <li>Около 5 лет консультирования в нумерологии</li>
-                    <li>Более 10 лет практики телесных и энергетических техник</li>
-                </ul>
-                <!-- можно добавить "много документов" — пока просто заглушка -->
-                <p style="margin-top: 2rem; background: #dbe9e2; padding: 1rem; border-radius: 20px; font-size: 0.95rem;">
-                    📄 Сертификаты и дипломы (можно вставить фото документов позже)
-                </p>
-            </div>
+<!-- SERVICES -->
+<section class="section">
+<h2>Услуги и тарифы</h2>
+<div class="services">
 
-            <div class="testimonials">
-                <h3>Отзывы</h3>
-                <!-- слайдер отзывов на радио-кнопках (CSS only) -->
-                <div class="slider">
-                    <input type="radio" name="testimonial" id="t1" checked hidden>
-                    <input type="radio" name="testimonial" id="t2" hidden>
-                    <input type="radio" name="testimonial" id="t3" hidden>
+<div class="card">
+<img src="images/2.jpg" alt="Биодинамика">
+<div class="card-content">
+<h3>Сеансы Краниосакральной Биодинамики</h3>
+<div class="price">3300 ₽</div>
+<p>
+🌿 Биодинамика — мягкая техника восстановления естественных ритмов организма.
+Активируются внутренние процессы оздоровления, возвращается энергия и лёгкость.
+</p>
+</div>
+</div>
 
-                    <div class="slides">
-                        <div class="slide" style="order: 1;">
-                            <img src="/images/feedback1.jpg" alt="фото клиента">
-                            <p>«После сеанса биодинамики ушла многолетняя боль в спине. Жанна — чуткий профессионал, рекомендую!»</p>
-                            <div class="author">— Елена, 42 года</div>
-                        </div>
-                        <div class="slide" style="order: 2;">
-                            <img src="/images/feedback2.jpg" alt="фото клиента">
-                            <p>«Очень точная нумерологическая консультация, помогла разобраться в отношениях. Благодарю!»</p>
-                            <div class="author">— Михаил, 35 лет</div>
-                        </div>
-                        <div class="slide" style="order: 3;">
-                            <img src="/images/feedback3.jpg" alt="фото клиента">
-                            <p>«Рейки с Жанной — это глубокое расслабление и восстановление энергии. Обязательно приду ещё.»</p>
-                            <div class="author">— Анна, 28 лет</div>
-                        </div>
-                    </div>
+<div class="card">
+<img src="images/3.jpg" alt="Квантовая психология">
+<div class="card-content">
+<h3>Квантовая психология</h3>
+<div class="price">2500 ₽</div>
+<p>
+Консультация и курсовое сопровождение.<br>
+Инструменты: нейрографика, МАК-карты, энергопрактики.
+</p>
+</div>
+</div>
 
-                    <div class="slider-nav">
-                        <label for="t1" style="cursor: pointer; width: 40px; height: 8px; background: #cbd9d2; border-radius: 8px; display: block;"></label>
-                        <label for="t2" style="cursor: pointer; width: 40px; height: 8px; background: #cbd9d2; border-radius: 8px; display: block;"></label>
-                        <label for="t3" style="cursor: pointer; width: 40px; height: 8px; background: #cbd9d2; border-radius: 8px; display: block;"></label>
-                    </div>
+<div class="card">
+<img src="images/4.jpg" alt="Нумерология">
+<div class="card-content">
+<h3>Нумерология</h3>
+<div class="price">2000–7000 ₽</div>
+<p>
+Здоровье, родология, детская нумерология,
+отношения, прогностика.
+</p>
+</div>
+</div>
 
-                    <!-- скрипт для подсветки активной точки и переключения (чисто CSS работает через :checked, но для простоты оставим так)
-                         на самом деле радио не управляют слайдами без дополнительного CSS, но я выше использовал radio, а здесь оставлю как управление через якоря?
-                         Для корректной работы сделаем через якоря (слайдер без JS) -->
-                </div>
-                <!-- Заменим на рабочий CSS-слайдер на якорях (без радио) — проще и надёжнее -->
-                <div style="margin-top: 1rem;">
-                    <div style="display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; border-radius: 30px; background: transparent;">
-                        <div style="flex: 0 0 100%; scroll-snap-align: start; background: white; padding: 1.5rem; border-radius: 30px;">
-                            <img src="/images/feedback1.jpg" alt="отзыв 1" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem;">
-                            <p>«После сеанса биодинамики ушла многолетняя боль в спине. Жанна — чуткий профессионал, рекомендую!»</p>
-                            <div class="author">— Елена, 42 года</div>
-                        </div>
-                        <div style="flex: 0 0 100%; scroll-snap-align: start; background: white; padding: 1.5rem; border-radius: 30px;">
-                            <img src="/images/feedback2.jpg" alt="отзыв 2" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem;">
-                            <p>«Очень точная нумерологическая консультация, помогла разобраться в отношениях. Благодарю!»</p>
-                            <div class="author">— Михаил, 35 лет</div>
-                        </div>
-                        <div style="flex: 0 0 100%; scroll-snap-align: start; background: white; padding: 1.5rem; border-radius: 30px;">
-                            <img src="/images/feedback3.jpg" alt="отзыв 3" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem;">
-                            <p>«Рейки с Жанной — это глубокое расслабление и восстановление энергии. Обязательно приду ещё.»</p>
-                            <div class="author">— Анна, 28 лет</div>
-                        </div>
-                    </div>
-                    <div style="display: flex; justify-content: center; gap: 0.5rem; margin-top: 0.8rem;">
-                        <span style="width: 40px; height: 8px; background: #2c4a3b; border-radius: 8px;"></span>
-                        <span style="width: 40px; height: 8px; background: #cbd9d2; border-radius: 8px;"></span>
-                        <span style="width: 40px; height: 8px; background: #cbd9d2; border-radius: 8px;"></span>
-                    </div>
-                    <p style="text-align: center; color: #5f756b; margin-top: 0.5rem;">→ листайте вправо ←</p>
-                </div>
-            </div>
-        </div>
+<div class="card">
+<img src="images/5.jpg" alt="Рейки">
+<div class="card-content">
+<h3>Сеансы РейКи</h3>
+<div class="price">3000–5000 ₽</div>
+<p>
+Диагностика и энергокоррекция.
+Метод, гармонизирующий тело и психику.
+</p>
+</div>
+</div>
 
-        <!-- БЛОК 4: КОНТАКТЫ -->
-        <div class="contacts">
-            <div class="contacts-left">
-                <h3>Контакты</h3>
-                <p>📞 <a href="tel:+79157615252">8-915-761-52-52</a></p>
-                <p>📬 Telegram: <a href="https://t.me/Zanna_KSBD" target="_blank">@Zanna_KSBD</a></p>
-                <p>📘 VK: <a href="https://vk.com/zhannaladka" target="_blank">zhannaladka</a></p>
-                <div class="social-icons">
-                    <a href="https://t.me/Zanna_KSBD" target="_blank"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='%232c4a3b'%3E%3Cpath d='M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.987c-.643-.2-.658-.643.135-.953l11.563-4.457c.537-.2 1.006.118.832.941z'/%3E%3C/svg%3E" alt="Telegram"></a>
-                    <a href="https://vk.com/zhannaladka" target="_blank"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='%232c4a3b'%3E%3Cpath d='M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.987c-.643-.2-.658-.643.135-.953l11.563-4.457c.537-.2 1.006.118.832.941z'/%3E%3C/svg%3E" alt="VK"></a>
-                </div>
-            </div>
-            <div class="contacts-right">
-                <!-- можно вставить какой-то красивый баннер или оставить пустым -->
-                <img src="/images/contact-banner.jpg" alt="природа" style="max-width: 200px; border-radius: 30px; opacity: 0.7;">
-            </div>
-        </div>
+</div>
+</section>
 
-        <div class="footer-note">
-            ✨ Запись по телефону или в мессенджерах ✨
-        </div>
-    </div>
-    <!-- маленький скрипт для подсветки точек (чисто визуально, не влияет на скролл) -->
-    <script>
-        // можно добавить позже для активации точек при скролле, но сейчас не обязательно
-    </script>
+<!-- WHY + DOCS -->
+<section class="section">
+<h2>Почему стоит прийти ко мне?</h2>
+<ul style="margin:20px 0 40px 20px">
+<li>Индивидуальный подход</li>
+<li>5+ лет консультирования в нумерологии</li>
+<li>10+ лет практики телесных и энергетических техник</li>
+</ul>
+
+<h3>Сертификаты и документы</h3>
+<div class="slider docs">
+<img src="images/6.jpg">
+<img src="images/7.jpg">
+<img src="images/8.jpg">
+<img src="images/9.jpg">
+<img src="images/10.jpg">
+<img src="images/11.jpg">
+<img src="images/12.jpg">
+<img src="images/13.jpg">
+</div>
+<p style="text-align:center;margin-top:10px;color:#777">→ листайте вправо ←</p>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section">
+<h2>Отзывы клиентов</h2>
+<div class="slider">
+
+<div class="slide">
+<img src="images/1.jpg">
+<p>После сеансов ушли головные боли, появилась энергия и ощущение целостности.</p>
+<strong>— Елена</strong>
+</div>
+
+<div class="slide">
+<img src="images/1.jpg">
+<p>Очень точная нумерологическая консультация, помогла разобраться в отношениях.</p>
+<strong>— Михаил</strong>
+</div>
+
+<div class="slide">
+<img src="images/1.jpg">
+<p>После работы с программами ушло внутреннее напряжение, стало легче дышать.</p>
+<strong>— Анна</strong>
+</div>
+
+<div class="slide">
+<img src="images/1.jpg">
+<p>Проработка запроса по целям дала новый уровень осознания.</p>
+<strong>— Ольга</strong>
+</div>
+
+<div class="slide">
+<img src="images/1.jpg">
+<p>Сессия прошла мягко и бережно, почувствовала возвращение энергии.</p>
+<strong>— Мария</strong>
+</div>
+
+<div class="slide">
+<img src="images/1.jpg">
+<p>Глубокая работа, благодарю за профессионализм и поддержку.</p>
+<strong>— Светлана</strong>
+</div>
+
+</div>
+<p style="text-align:center;margin-top:10px;color:#777">→ листайте вправо ←</p>
+</section>
+
+<!-- CONTACTS -->
+<section class="section contacts">
+<h2>Контакты</h2>
+<p>📞 8-915-761-52-52</p>
+<p>📬 Telegram: <a href="https://t.me/Zanna_KSBD" target="_blank">@Zanna_KSBD</a></p>
+<p>📘 VK: <a href="https://vk.com/zhannaladka" target="_blank">vk.com/zhannaladka</a></p>
+
+<a class="btn" href="https://t.me/Zanna_KSBD" target="_blank">Записаться сейчас</a>
+</section>
+
+<div class="footer">
+© 2026 Жанна Федорина
+</div>
+
+</div>
 </body>
 </html>
