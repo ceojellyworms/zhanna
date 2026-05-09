@@ -1,469 +1,693 @@
+```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Жанна Федорина — Краниосакральная биодинамика | Рейки | Нумерология</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Жанна Федорина | Краниосакральная биодинамика · Рейки · Нумерология</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
     body {
-      background: #faf9f6;
-      color: #2d2d2a;
-      line-height: 1.6;
+      background: radial-gradient(circle at 10% 20%, #0b0a14 0%, #03020a 100%);
+      color: #ece9f0;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1e1a2f;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #b87c4f;
+      border-radius: 10px;
+    }
+
+    #particles-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
     }
 
     .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 20px;
+      position: relative;
+      z-index: 2;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 30px 24px 60px;
     }
 
-    h1, h2, h3 {
-      color: #1f3f32;
-    }
-
-    .section {
-      margin: 60px 0;
+    .glass-card, .card, .slide, .contacts, .hero-text, .tags span, .btn {
+      backdrop-filter: blur(12px);
+      background: rgba(20, 15, 35, 0.55);
+      border: 1px solid rgba(210, 180, 140, 0.25);
+      border-radius: 32px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     }
 
     .btn {
-      display: inline-block;
-      background: #1f3f32;
-      color: #fff;
-      padding: 14px 28px;
-      border-radius: 40px;
-      text-decoration: none;
-      margin-top: 20px;
-      transition: 0.3s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #b87c4f, #8b5a2e);
       border: none;
-      cursor: pointer;
+      color: white;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      padding: 12px 24px;
+      border-radius: 60px;
+      text-decoration: none;
+      text-align: center;
+      white-space: normal;
+      word-break: break-word;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(184, 124, 79, 0.3);
+      max-width: 100%;
+      line-height: 1.4;
     }
 
     .btn:hover {
-      background: #305f4a;
+      transform: translateY(-3px);
+      background: linear-gradient(135deg, #d18f5c, #a46d3a);
+      box-shadow: 0 12px 28px rgba(184, 124, 79, 0.5);
     }
 
-    /* Герой */
+    h1, h2, h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+    h1 {
+      font-size: 3.2rem;
+      background: linear-gradient(130deg, #f3e7c9, #e0bc8c);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    h2 {
+      font-size: 2.3rem;
+      margin-bottom: 1.5rem;
+      border-left: 5px solid #b87c4f;
+      padding-left: 20px;
+    }
+    h3 {
+      font-size: 1.6rem;
+      color: #f2d9b3;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 20px 0;
+    }
+    .tags span {
+      display: inline-block;
+      background: rgba(184, 124, 79, 0.25);
+      border: 1px solid rgba(210, 180, 140, 0.5);
+      font-weight: 500;
+      padding: 8px 18px;
+      font-size: 0.9rem;
+      border-radius: 60px;
+      white-space: normal;
+      word-break: break-word;
+      max-width: 100%;
+      line-height: 1.3;
+    }
+
     .hero {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 40px;
+      gap: 50px;
+      margin: 40px 0 80px;
     }
-
     .hero img {
-      width: 220px;
-      height: 220px;
+      width: 240px;
+      height: 240px;
       border-radius: 50%;
       object-fit: cover;
+      border: 3px solid #b87c4f;
+      box-shadow: 0 0 30px rgba(184, 124, 79, 0.4);
+      transition: transform 0.3s;
     }
-
     .hero-text {
+      padding: 30px 35px;
       flex: 1;
     }
 
-    .tags {
-      margin: 20px 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .tags span {
-      background: #e4f0ea;
-      padding: 6px 16px;
-      border-radius: 20px;
-      font-size: 14px;
-    }
-
-    /* Услуги */
     .services {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
       gap: 30px;
+      margin-top: 20px;
     }
-
     .card {
-      background: #fff;
-      border-radius: 20px;
+      background: rgba(15, 12, 28, 0.7);
+      backdrop-filter: blur(14px);
       overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-      display: flex;
-      flex-direction: column;
     }
-
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: #b87c4f;
+    }
     .card img {
       width: 100%;
       height: 200px;
       object-fit: cover;
+      transition: transform 0.5s;
     }
-
     .card-content {
-      padding: 20px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
+      padding: 24px;
     }
-
     .price {
+      color: #e6bc8e;
       font-weight: 700;
-      margin: 10px 0;
-      color: #b8763c;
+      font-size: 1.3rem;
+      margin: 12px 0;
     }
-
-    .tg-link {
-      margin-top: 10px;
-      font-size: 0.95rem;
-    }
-
     .tg-link a {
-      color: #1f3f32;
-      text-decoration: underline;
-      font-weight: 500;
+      color: #e6bc8e;
+      text-decoration: none;
+      border-bottom: 1px dashed;
     }
 
-    /* Слайдеры (документы и отзывы) */
+    .slider-wrapper {
+      position: relative;
+      margin: 30px 0;
+    }
     .slider {
       display: flex;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
-      gap: 20px;
-      padding-bottom: 10px;
+      gap: 25px;
+      scroll-behavior: smooth;
+      padding-bottom: 15px;
+      scrollbar-width: thin;
     }
-
+    .slider::-webkit-scrollbar {
+      height: 5px;
+    }
     .slide {
       flex: 0 0 100%;
       scroll-snap-align: start;
-      background: #fff;
-      padding: 25px;
-      border-radius: 20px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      background: rgba(25, 20, 40, 0.75);
+      backdrop-filter: blur(16px);
+      border-radius: 36px;
+      padding: 28px;
     }
-
-    .slide img {
-      width: 80px;
-      height: 80px;
+    .docs .slide {
+      flex: 0 0 80%;
+      text-align: center;
+      padding: 15px;
+    }
+    .docs img {
+      max-height: 500px;
+      width: auto;
+      max-width: 100%;
+      border-radius: 24px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+    .slide img.avatar {
+      width: 70px;
+      height: 70px;
       border-radius: 50%;
       object-fit: cover;
+      border: 2px solid #b87c4f;
       margin-bottom: 15px;
     }
-
-    /* Стили для раскрывающихся отзывов */
-    .testimonial-short {
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.6);
+      border: 1px solid #b87c4f;
+      color: #f0dbb4;
+      width: 44px;
+      height: 44px;
+      border-radius: 60px;
       cursor: pointer;
-      background: #f0f7f3;
-      padding: 10px 15px;
-      border-radius: 30px;
-      display: inline-block;
-      margin: 10px 0;
-      transition: background 0.2s;
+      font-size: 24px;
+      backdrop-filter: blur(6px);
+      z-index: 5;
+    }
+    .slider-btn:hover {
+      background: #b87c4f;
+      color: #0b0a14;
+    }
+    .btn-left { left: -20px; }
+    .btn-right { right: -20px; }
+    @media (max-width: 700px) {
+      .slider-btn { width: 36px; height: 36px; font-size: 18px; }
+      .btn-left { left: -12px; }
+      .btn-right { right: -12px; }
+      .tags span { font-size: 0.8rem; padding: 6px 14px; }
+      h1 { font-size: 2.3rem; }
+      .btn { padding: 10px 18px; font-size: 0.9rem; }
     }
 
-    .testimonial-short:hover {
-      background: #ddebe2;
-    }
-
-    .testimonial-full {
+    .modal {
       display: none;
-      margin: 15px 0 10px;
-      white-space: pre-wrap;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
     }
-
-    .testimonial-full p {
-      margin-bottom: 15px;
-    }
-
-    .close-full {
-      background: #1f3f32;
-      color: white;
-      border: none;
-      padding: 8px 20px;
-      border-radius: 30px;
-      cursor: pointer;
-      font-size: 0.9rem;
-    }
-
-    .close-full:hover {
-      background: #305f4a;
-    }
-
-    /* Слайдер документов */
-    .docs img {
-      flex: 0 0 100%;
-      scroll-snap-align: start;
-      border-radius: 20px;
-      max-height: 600px;
-      object-fit: contain;
-      background: #fff;
-    }
-
-    /* Контакты */
-    .contacts {
-      background: #fff;
+    .modal-content {
+      background: #120e22;
+      border-radius: 48px;
+      max-width: 600px;
+      width: 90%;
       padding: 30px;
-      border-radius: 30px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      border: 1px solid #b87c4f;
+      position: relative;
+      color: #f0e7d6;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      font-size: 28px;
+      cursor: pointer;
+      color: #e6bc8e;
+    }
+    .read-more-btn {
+      background: none;
+      border: 1px solid #b87c4f;
+      color: #e6bc8e;
+      padding: 8px 18px;
+      border-radius: 60px;
+      margin-top: 15px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .read-more-btn:hover {
+      background: #b87c4f;
+      color: #0f0b1a;
     }
 
-    /* Кликабельный телефон */
+    .contacts {
+      background: rgba(10, 7, 20, 0.7);
+      backdrop-filter: blur(16px);
+      padding: 40px;
+      border-radius: 32px;
+    }
     .phone-link {
-      color: inherit;
+      color: #e6bc8e;
       text-decoration: none;
-      border-bottom: 1px dashed #1f3f32;
+      font-size: 1.5rem;
+      font-weight: 500;
     }
-    .phone-link:hover {
-      border-bottom-style: solid;
+    .social-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 30px 0;
     }
-
     .footer {
       text-align: center;
-      margin: 40px 0;
-      font-size: 14px;
-      color: #777;
+      margin-top: 60px;
+      opacity: 0.7;
+      font-size: 0.85rem;
+    }
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #b87c4f;
+      width: 48px;
+      height: 48px;
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s;
+      z-index: 99;
+      border: none;
+      color: white;
+      font-size: 24px;
+    }
+    .scroll-top.show {
+      opacity: 1;
+      visibility: visible;
     }
 
-    @media (max-width: 768px) {
-      .hero {
-        flex-direction: column;
-        text-align: center;
-      }
-      .hero img {
-        width: 180px;
-        height: 180px;
-      }
+    .pre-wrap-text {
+      white-space: pre-wrap;
+      line-height: 1.6;
     }
   </style>
 </head>
 <body>
-  <div class="container">
 
-    <!-- ГЕРОЙ -->
-    <section class="section hero">
-      <img src="images/1.jpg" alt="Жанна Федорина">
-      <div class="hero-text">
-        <h1>Жанна Федорина</h1>
-        <div class="tags">
-          <span>Краниосакральная биодинамика</span>
-          <span>Мастер РейКи</span>
-          <span>Нумеролог</span>
-          <span>Квантовый психолог</span>
-        </div>
-        <p>
-          Мой целостный подход к человеку, как к многомерной структуре (Тело – Душа – Дух)
-          позволяет разрешить вопросы на уровне тела, личности и Души.
-        </p>
-        <!-- ССЫЛКА ЗАМЕНЕНА НА VK.RU/ZHANNALADKA -->
-        <a class="btn" href="https://vk.ru/zhannaladka" target="_blank">Записаться на консультацию</a>
+<canvas id="particles-canvas"></canvas>
+<button class="scroll-top" id="scrollTopBtn"><i class="fas fa-chevron-up"></i></button>
+
+<div class="container">
+
+  <section class="hero fade-up">
+    <img src="images/1.jpg" alt="Жанна Федорина">
+    <div class="hero-text glass-card">
+      <h1>Жанна Федорина</h1>
+      <div class="tags">
+        <span>🌿 Краниосакральная биодинамика</span>
+        <span>✨ Мастер РейКи</span>
+        <span>🔢 Нумеролог</span>
+        <span>🌀 Квантовый психолог</span>
       </div>
-    </section>
-
-    <!-- УСЛУГИ -->
-    <section class="section">
-      <h2>Услуги и тарифы</h2>
-      <div class="services">
-
-        <!-- Карточка биодинамики + ссылка на Telegram-канал -->
-        <div class="card">
-          <img src="images/2.jpg" alt="Биодинамика">
-          <div class="card-content">
-            <h3>Сеансы Краниосакральной Биодинамики</h3>
-            <div class="price">3300 ₽</div>
-            <p>
-              🌿 Биодинамика — мягкая техника восстановления естественных ритмов организма.
-              Активируются внутренние процессы оздоровления, возвращается энергия и лёгкость.
-            </p>
-            <!-- Вставленная ссылка на Telegram канал -->
-            <div class="tg-link">
-              🔗 <a href="https://t.me/ZannaZdorovie" target="_blank">Telegram-канал о биодинамике</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <img src="images/3.jpg" alt="Квантовая психология">
-          <div class="card-content">
-            <h3>Квантовая психология</h3>
-            <div class="price">2500 ₽</div>
-            <p>
-              Консультация и курсовое сопровождение.<br>
-              Инструменты: нейрографика, МАК-карты, энергопрактики.
-            </p>
-          </div>
-        </div>
-
-        <div class="card">
-          <img src="images/4.jpg" alt="Нумерология">
-          <div class="card-content">
-            <h3>Нумерология</h3>
-            <div class="price">2000–7000 ₽</div>
-            <p>
-              Здоровье, родология, детская нумерология,
-              отношения, прогностика.
-            </p>
-          </div>
-        </div>
-
-        <div class="card">
-          <img src="images/5.jpg" alt="Рейки">
-          <div class="card-content">
-            <h3>Сеансы РейКи</h3>
-            <div class="price">3000–5000 ₽</div>
-            <p>
-              Диагностика и энергокоррекция.
-              Метод, гармонизирующий тело и психику.
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ПОЧЕМУ Я + ДОКУМЕНТЫ -->
-    <section class="section">
-      <h2>Почему стоит прийти ко мне?</h2>
-      <ul style="margin:20px 0 40px 20px">
-        <li>Индивидуальный подход</li>
-        <li>5+ лет консультирования в нумерологии</li>
-        <li>10+ лет практики телесных и энергетических техник</li>
-      </ul>
-
-      <h3>Сертификаты и документы</h3>
-      <div class="slider docs">
-        <img src="images/6.jpg">
-        <img src="images/7.jpg">
-        <img src="images/8.jpg">
-        <img src="images/9.jpg">
-        <img src="images/10.jpg">
-        <img src="images/11.jpg">
-        <img src="images/12.jpg">
-        <img src="images/13.jpg">
-      </div>
-      <p style="text-align:center;margin-top:10px;color:#777">→ листайте вправо ←</p>
-    </section>
-
-    <!-- ОТЗЫВЫ (раскрывающиеся) -->
-    <section class="section">
-      <h2>Отзывы клиентов</h2>
-      <div class="slider">
-
-        <!-- Елена 1 -->
-        <div class="slide" id="testimonial-1">
-          <img src="images/14.jpg">
-          <strong>— Елена</strong>
-          <div class="testimonial-short">Меня зовут Елена. Я посещаю краниосакральную биодинамику раз в неделю...</div>
-          <div class="testimonial-full">
-            <p>Меня зовут Елена. Я практикую и посещаю краниосакральную биодинамику раз в неделю у чуткого терапевта Жанны Федориной.<br><br>Что я заметила и получила от сеансов:<br>- ушла отечность, пастозность с лицевого черепа и появилась контурность лица; с головного черепа, кости черепа стали более подвижны и дышат.<br>- увеличился диапазон вдоха и выдоха, заметила, когда делаю дыхательные практики.<br>- улучшилась осанка, стала более ровной и симметричной с обеих сторон.<br>- после сеанса чувствуешь себя ресурсной, хочется что-то делать, появляется прилив сил.<br>- Был у меня запрос на снятие головной боли, так после сеанса, как взмахом волшебной палочки боль прошла и почувствовала лёгкость во всем теле, благодаря техникам краниосакральной биодинамике, которой владеет Жанна! Спасибо!</p>
-            <button class="close-full">Свернуть</button>
-          </div>
-        </div>
-
-        <!-- Татьяна -->
-        <div class="slide" id="testimonial-2">
-          <img src="images/15.jpg">
-          <strong>— Татьяна</strong>
-          <div class="testimonial-short">Я пришла к сюда с приветом, рассказать, что мир чудесен...</div>
-          <div class="testimonial-full">
-            <p>Я пришла к сюда с приветом,<br>Рассказать, что мир чудесен,<br>вот такими удивительными увлечёнными людьми, как Жанна.<br><br>Понимаете ли, что у каждого есть своё предназначение, и если ты познал своё, ты счастлив и творишь свою жизнь как и не снилось, ещё несколько лет назад!<br>Из состояния, "я знаю что и как делать", ты начинаешь осваивать неизвестное и живёшь в потоке / ну, это кто в этом был, им понятно, кто пока нет - пропустите эту часть... у вас всё впереди, поверьте мне!<br>И что на своих сеансах Жанна делает очень бережно и профессионально - тому просто пока в нашем языке нет точных понятий, но очень скоро это станет обычным явлением - когда сам организм человека излечивает = исцеляет неполадки, сбои. И да, медицине некуда деваться, ей приходится осваивать новые инструменты потому как старые методы не работают. Поэтому очень много продвинутых врачей и сестёр милосердия уже применяют это новое, привносят в свою практику.<br>Это очень фантастично звучит, но так и происходит.<br>Я прошла весь путь Мастера вместе, с первых уроков и на себе все эти изменения ощутила.<br>И, фоманеверящий, периодически и у меня появлялся, 🤔и тогда Вселенная моментально давала опыт через острую боль - боль проходит прямо во время сеанса!!<br>Хотите проверить? 😉😜<br>Благодарю, чудесный человек и прекрасный мастер краниосакральной биодинамики, Жанна Леонидовна!</p>
-            <button class="close-full">Свернуть</button>
-          </div>
-        </div>
-
-        <!-- Юлия -->
-        <div class="slide" id="testimonial-3">
-          <img src="images/16.jpg">
-          <strong>— Юлия</strong>
-          <div class="testimonial-short">Жанна, благодарю тебя от всего сердца за бережность...</div>
-          <div class="testimonial-full">
-            <p>Жанна, благодарю тебя от всего сердца за ту бережность, с которой ты ведёшь сессию, за твоё поле.<br>Встреча с тобой стала для меня возвращением к себе — естественным, мягким, как-будто давно готовящимся образом.<br>С тобой я смогла увидеть свой собственный ритм, услышать его, принять и наконец опереться на него.<br>В сессии я буквально чувствовала, как возвращается ко мне моя энергия — мягко, естественно, так, будто она всегда ждала момента, чтобы я позволила ей жить во мне свободно.<br>Тело отозвалось особенно — те места, где долгие годы были блоки, как будто расправились. Стало легче дышать, легче быть в себе, легче ощущать "Я есть" без напряжения, без усилий… просто естественно.<br>Спасибо тебе за твоё умение держать поле так тонко и бережно.🙏<br>Ты помогла мне ощутить свою целостность — не умом, а каждой клеточкой.<br>Благодарю, Благодарю, Благодарю 🌷🌷🌷</p>
-            <button class="close-full">Свернуть</button>
-          </div>
-        </div>
-
-        <!-- Евгения -->
-        <div class="slide" id="testimonial-4">
-          <img src="images/17.jpg">
-          <strong>— Евгения</strong>
-          <div class="testimonial-short">Добрый день, всем. Благодарю Жанну за сессию. Запрос - тяга к сладенькому...</div>
-          <div class="testimonial-full">
-            <p>Добрый день, всем.<br>Благодарю @Zanna_KSBD Жанну за сессию.<br>Запрос - тяга к сладенькому (пироженки, тортики, печеньки 🤩)<br>Увидела связку - бабушка пекла огромные булки хлеба, большое количество пирогов и раздавала всем своим детям - тем самым объединяла Род, моя мама тоже самое делала, я начала тоже повторять их программу - но чувствовала напряжение - поработали с программой и вышли на другой уровень запроса - научиться "чувствовать!!!" ВСЁ, что я ем (нам даны органы чувств, а используем ли мы их? Или "бежим" второпях по жизни?)<br>Признаюсь, что с "тягой к сладкому" работала не раз, но сегодня я вышла на уровень, где стало понятно, почему тяга возникала.<br>Душа моя сказала - Почувствуй вкус 😊.<br>Прикольно 🤪.<br>Жанна, ещё раз благодарю</p>
-            <button class="close-full">Свернуть</button>
-          </div>
-        </div>
-
-        <!-- Наталья -->
-        <div class="slide" id="testimonial-5">
-          <img src="images/18.jpg">
-          <strong>— Наталья</strong>
-          <div class="testimonial-short">@Zanna_KSBD, дорогая! Как вовремя была ты на связи со мной!</div>
-          <div class="testimonial-full">
-            <p>@Zanna_KSBD, дорогая! Как вовремя была ты на связи со мной! Поднимаются такие информационные пласты, о которых я даже не могла подумать! Как бережно и искренне ты провела меня по моим закоулкам души!<br>Благодарю тебя за отзывчивость, за понимание и за широту твоей души! 🌞🌞🌞<br>Рекомендую тебя как классного специалиста!</p>
-            <button class="close-full">Свернуть</button>
-          </div>
-        </div>
-
-        <!-- Елена 2 -->
-        <div class="slide" id="testimonial-6">
-          <img src="images/19.jpg">
-          <strong>— Елена</strong>
-          <div class="testimonial-short">Благодарю Жанна за проведенную сессию по теме: «Нежелание постановки целей»...</div>
-          <div class="testimonial-full">
-            <p>Благодарю Жанна за проведенную сессию по теме: «Нежелание постановки целей»<br><br>Просканировав моё состояние вышли на то, что очень много «фальшивых» инородных, не моих целей, принесённых из коллективного поля, которые не вызывают у меня как такового возбуждения, но все равно фонят внутри, привнося чувство беспокойства.<br>В течении определённого времени после нашей сессии, отслеживала эти голоса внутри и давала чёткое определение, моё это или нет!)<br>Сканировала, через расслабление в теле и чувство расширения и вдохновения в общем.<br>Научилась различать сопротивление инородному и просто страх от возможности выхода из зоны комфорта.<br>Жанна, точечно, буквально одним словом выводит на новый уровень осознания!<br>Пример слово -Зона-<br>Это граница! Все! Бинго! Все сразу встает на свои места!<br>Все границы и зоны только у нас в голове, а в реальности их даже нет! А вот Я точно ЕСТЬ !)<br>Поняв ещё в юности, что мысли и слова материальны, теперь я всегда пользуюсь таким правилом :«подумать прежде чем подумать» 😀<br>Жанна добавила в мою копилку инструментов фразу: «хочу ли я хотеть?» 😁<br>Это было просто гениально для меня!<br>Мой умный ум в тот момент повис как плети хмеля на заборе 😂<br>И это была точка «0»<br>Мы сломали систему))<br>То есть все что было ранее 2 варианта: я хочу, я не хочу и не волнует)<br>А тут появился выбор..<br>А хочу ли я вообще хотеть?))<br>Как будто повисаешь в пустоте, понимая, что слово Цель как таковое ушло из моей жизни..<br>А что тогда осталось ..?<br>Осталось сама Жизнь .. чистая..<br>Изначальная Энергия<br>Первичное дыхание ..Я Есть ✨🙌<br>Жанна благодарю за такое глубокое мощное погружение 🤍🙏🏻<br>За то, что через Тебя я ещё раз посмотрела в глаза самой Жизни ✨<br>Такие Красивые ..такие Чистые ..такие Живые 🌱<br>что с каждым вздохом я ХОЧУ Смотреть в Них снова и снова ✨✨😊</p>
-            <button class="close-full">Свернуть</button>
-          </div>
-        </div>
-
-      </div>
-      <p style="text-align:center;margin-top:10px;color:#777">→ листайте вправо ←</p>
-    </section>
-
-    <!-- КОНТАКТЫ -->
-    <section class="section contacts">
-      <h2>Контакты</h2>
-      <p>📞 <a href="tel:+79157615253" class="phone-link">8-915-761-52-53</a></p>
-      <div style="display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0;">
-        <a class="btn" href="https://t.me/Zanna_KSBD" target="_blank">📬 Telegram: @Zanna_KSBD</a>
-        <a class="btn" href="https://vk.com/zhannaladka" target="_blank">📘 VK: vk.com/zhannaladka</a>
-      </div>
-      <!-- ССЫЛКА ЗАМЕНЕНА НА VK.RU/ZHANNALADKA -->
-      <a class="btn" href="https://vk.ru/zhannaladka" target="_blank">Записаться сейчас</a>
-    </section>
-
-    <div class="footer">
-      © 2026 Жанна Федорина
+      <p style="font-size: 1.1rem;">Я смотрю на человека как на целостную систему — тело, душу, дух. Это помогает решать вопросы на всех уровнях: телесном, личном и глубоко внутри.</p>
+      <a class="btn" href="https://vk.ru/zhannaladka" target="_blank" style="margin-top: 28px;"><i class="fab fa-vk"></i> Записаться на консультацию</a>
     </div>
+  </section>
 
+  <section class="section fade-up">
+    <h2>🌙 Практики & Тарифы</h2>
+    <div class="services">
+      <div class="card">
+        <img src="images/2.jpg" alt="Биодинамика">
+        <div class="card-content">
+          <h3>Краниосакральная биодинамика</h3>
+          <div class="price">3 300 ₽</div>
+          <p>Мягкая техника восстановления ритмов организма. Возвращает энергию и лёгкость.</p>
+          <div class="tg-link"><i class="fab fa-telegram"></i> <a href="https://t.me/ZannaZdorovie" target="_blank">Telegram-канал о биодинамике</a></div>
+        </div>
+      </div>
+      <div class="card">
+        <img src="images/3.jpg" alt="Квантовая психология">
+        <div class="card-content">
+          <h3>Квантовая психология</h3>
+          <div class="price">2 500 ₽</div>
+          <p>Консультация + сопровождение. Нейрографика, МАК-карты, энергопрактики.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="images/4.jpg" alt="Нумерология">
+        <div class="card-content">
+          <h3>Нумерология</h3>
+          <div class="price">2 000 – 7 000 ₽</div>
+          <p>Здоровье, родология, детская нумерология, отношения, прогностика.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="images/5.jpg" alt="Рейки">
+        <div class="card-content">
+          <h3>Сеансы РейКи</h3>
+          <div class="price">3 000 – 5 000 ₽</div>
+          <p>Диагностика, энергокоррекция. Гармонизация тела и психики.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section fade-up">
+    <h2>📜 Сертификаты & дипломы</h2>
+    <div class="slider-wrapper">
+      <div class="slider docs" id="docsSlider">
+        <div class="slide"><img src="images/6.jpg" alt="сертификат" class="doc-img"></div>
+        <div class="slide"><img src="images/7.jpg" alt="сертификат" class="doc-img"></div>
+        <div class="slide"><img src="images/8.jpg" alt="сертификат" class="doc-img"></div>
+        <div class="slide"><img src="images/9.jpg" alt="сертификат" class="doc-img"></div>
+        <div class="slide"><img src="images/10.jpg" alt="сертификат" class="doc-img"></div>
+        <div class="slide"><img src="images/11.jpg" alt="сертификат" class="doc-img"></div>
+        <div class="slide"><img src="images/12.jpg" alt="сертификат" class="doc-img"></div>
+        <div class="slide"><img src="images/13.jpg" alt="сертификат" class="doc-img"></div>
+      </div>
+      <button class="slider-btn btn-left" id="docsLeft"><i class="fas fa-chevron-left"></i></button>
+      <button class="slider-btn btn-right" id="docsRight"><i class="fas fa-chevron-right"></i></button>
+    </div>
+    <ul style="margin: 30px 0 0 25px; display: flex; flex-wrap: wrap; gap: 15px;">
+      <li><i class="fas fa-star-of-life" style="color:#b87c4f;"></i> Индивидуальный подход</li>
+      <li><i class="fas fa-star-of-life" style="color:#b87c4f;"></i> 5+ лет нумерологии</li>
+      <li><i class="fas fa-star-of-life" style="color:#b87c4f;"></i> 10+ лет телесных практик</li>
+    </ul>
+  </section>
+
+  <section class="section fade-up">
+    <h2>💬 Отзывы клиентов</h2>
+    <div class="slider-wrapper">
+      <div class="slider" id="reviewsSlider">
+        <div class="slide" data-full="Меня зовут Елена. Я практикую и посещаю краниосакральную биодинамику раз в неделю у чуткого терапевта Жанны Федориной.
+
+Что я заметила и получила от сеансов:
+- ушла отечность, пастозность с лицевого черепа и появилась контурность лица; с головного черепа, кости черепа стали более подвижны и дышат.
+- увеличился диапазон вдоха и выдоха, заметила, когда делаю дыхательные практики.
+- улучшилась осанка, стала более ровной и симметричной с обеих сторон.
+- после сеанса чувствуешь себя ресурсной, хочется что-то делать, появляется прилив сил.
+- Был у меня запрос на снятие головной боли, так после сеанса, как взмахом волшебной палочки боль прошла и почувствовала лёгкость во всем теле, благодаря техникам краниосакральной биодинамике, которой владеет Жанна! Спасибо!">
+          <img src="images/14.jpg" class="avatar" alt="Елена">
+          <strong>— Елена</strong>
+          <p class="short-text">Меня зовут Елена. Я посещаю краниосакральную биодинамику раз в неделю у чуткого терапевта Жанны Федориной...</p>
+          <button class="read-more-btn">Читать полностью <i class="fas fa-feather-alt"></i></button>
+        </div>
+        <div class="slide" data-full="Я пришла к сюда с приветом,
+Рассказать, что мир чудесен,
+вот такими удивительными увлечёнными людьми, как Жанна.
+
+Понимаете ли, что у каждого есть своё предназначение, и если ты познал своё, ты счастлив и творишь свою жизнь как и не снилось, ещё несколько лет назад!
+Из состояния, 'я знаю что и как делать', ты начинаешь осваивать неизвестное и живёшь в потоке / ну, это кто в этом был, им понятно, кто пока нет - пропустите эту часть... у вас всё впереди, поверьте мне!
+И что на своих сеансах Жанна делает очень бережно и профессионально - тому просто пока в нашем языке нет точных понятий, но очень скоро это станет обычным явлением - когда сам организм человека излечивает = исцеляет неполадки, сбои. И да, медицине некуда деваться, ей приходится осваивать новые инструменты потому как старые методы не работают. Поэтому очень много продвинутых врачей и сестёр милосердия уже применяют это новое, привносят в свою практику.
+Это очень фантастично звучит, но так и происходит.
+Я прошла весь путь Мастера вместе, с первых уроков и на себе все эти изменения ощутила.
+И, фоманеверящий, периодически и у меня появлялся, 🤔и тогда Вселенная моментально давала опыт через острую боль - боль проходит прямо во время сеанса!!
+Хотите проверить? 😉😜
+Благодарю, чудесный человек и прекрасный мастер краниосакральной биодинамики, Жанна Леонидовна!">
+          <img src="images/15.jpg" class="avatar" alt="Татьяна">
+          <strong>— Татьяна</strong>
+          <p class="short-text">Я пришла к сюда с приветом, рассказать, что мир чудесен, вот такими увлечёнными людьми, как Жанна...</p>
+          <button class="read-more-btn">Читать полностью <i class="fas fa-feather-alt"></i></button>
+        </div>
+        <div class="slide" data-full="Жанна, благодарю тебя от всего сердца за ту бережность, с которой ты ведёшь сессию, за твоё поле.
+Встреча с тобой стала для меня возвращением к себе — естественным, мягким, как-будто давно готовящимся образом.
+С тобой я смогла увидеть свой собственный ритм, услышать его, принять и наконец опереться на него.
+В сессии я буквально чувствовала, как возвращается ко мне моя энергия — мягко, естественно, так, будто она всегда ждала момента, чтобы я позволила ей жить во мне свободно.
+Тело отозвалось особенно — те места, где долгие годы были блоки, как будто расправились. Стало легче дышать, легче быть в себе, легче ощущать 'Я есть' без напряжения, без усилий… просто естественно.
+Спасибо тебе за твоё умение держать поле так тонко и бережно.🙏
+Ты помогла мне ощутить свою целостность — не умом, а каждой клеточкой.
+Благодарю, Благодарю, Благодарю 🌷🌷🌷">
+          <img src="images/16.jpg" class="avatar" alt="Юлия">
+          <strong>— Юлия</strong>
+          <p class="short-text">Жанна, благодарю тебя от всего сердца за бережность, с которой ты ведёшь сессию, за твоё поле...</p>
+          <button class="read-more-btn">Читать полностью <i class="fas fa-feather-alt"></i></button>
+        </div>
+        <div class="slide" data-full="Добрый день, всем.
+Благодарю @Zanna_KSBD Жанну за сессию.
+Запрос - тяга к сладенькому (пироженки, тортики, печеньки 🤩)
+Увидела связку - бабушка пекла огромные булки хлеба, большое количество пирогов и раздавала всем своим детям - тем самым объединяла Род, моя мама тоже самое делала, я начала тоже повторять их программу - но чувствовала напряжение - поработали с программой и вышли на другой уровень запроса - научиться 'чувствовать!!!' ВСЁ, что я ем (нам даны органы чувств, а используем ли мы их? Или 'бежим' второпях по жизни?)
+Признаюсь, что с 'тягой к сладкому' работала не раз, но сегодня я вышла на уровень, где стало понятно, почему тяга возникала.
+Душа моя сказала - Почувствуй вкус 😊.
+Прикольно 🤪.
+Жанна, ещё раз благодарю">
+          <img src="images/17.jpg" class="avatar" alt="Евгения">
+          <strong>— Евгения</strong>
+          <p class="short-text">Добрый день, всем. Благодарю Жанну за сессию. Запрос - тяга к сладенькому...</p>
+          <button class="read-more-btn">Читать полностью <i class="fas fa-feather-alt"></i></button>
+        </div>
+        <div class="slide" data-full="@Zanna_KSBD, дорогая! Как вовремя была ты на связи со мной! Поднимаются такие информационные пласты, о которых я даже не могла подумать! Как бережно и искренне ты провела меня по моим закоулкам души!
+Благодарю тебя за отзывчивость, за понимание и за широту твоей души! 🌞🌞🌞
+Рекомендую тебя как классного специалиста!">
+          <img src="images/18.jpg" class="avatar" alt="Наталья">
+          <strong>— Наталья</strong>
+          <p class="short-text">@Zanna_KSBD, дорогая! Как вовремя была ты на связи со мной! Поднимаются такие информационные пласты...</p>
+          <button class="read-more-btn">Читать полностью <i class="fas fa-feather-alt"></i></button>
+        </div>
+        <div class="slide" data-full="Благодарю Жанна за проведенную сессию по теме: «Нежелание постановки целей»
+
+Просканировав моё состояние вышли на то, что очень много «фальшивых» инородных, не моих целей, принесённых из коллективного поля, которые не вызывают у меня как такового возбуждения, но все равно фонят внутри, привнося чувство беспокойства.
+В течении определённого времени после нашей сессии, отслеживала эти голоса внутри и давала чёткое определение, моё это или нет!)
+Сканировала, через расслабление в теле и чувство расширения и вдохновения в общем.
+Научилась различать сопротивление инородному и просто страх от возможности выхода из зоны комфорта.
+Жанна, точечно, буквально одним словом выводит на новый уровень осознания!
+Пример слово -Зона-
+Это граница! Все! Бинго! Все сразу встает на свои места!
+Все границы и зоны только у нас в голове, а в реальности их даже нет! А вот Я точно ЕСТЬ !)
+Поняв ещё в юности, что мысли и слова материальны, теперь я всегда пользуюсь таким правилом :«подумать прежде чем подумать» 😀
+Жанна добавила в мою копилку инструментов фразу: «хочу ли я хотеть?» 😁
+Это было просто гениально для меня!
+Мой умный ум в тот момент повис как плети хмеля на заборе 😂
+И это была точка «0»
+Мы сломали систему))
+То есть все что было ранее 2 варианта: я хочу, я не хочу и не волнует)
+А тут появился выбор..
+А хочу ли я вообще хотеть?))
+Как будто повисаешь в пустоте, понимая, что слово Цель как таковое ушло из моей жизни..
+А что тогда осталось ..?
+Осталось сама Жизнь .. чистая..
+Изначальная Энергия
+Первичное дыхание ..Я Есть ✨🙌
+Жанна благодарю за такое глубокое мощное погружение 🤍🙏🏻
+За то, что через Тебя я ещё раз посмотрела в глаза самой Жизни ✨
+Такие Красивые ..такие Чистые ..такие Живые 🌱
+что с каждым вздохом я ХОЧУ Смотреть в Них снова и снова ✨✨😊">
+          <img src="images/19.jpg" class="avatar" alt="Елена">
+          <strong>— Елена</strong>
+          <p class="short-text">Благодарю Жанна за проведенную сессию по теме: «Нежелание постановки целей»...</p>
+          <button class="read-more-btn">Читать полностью <i class="fas fa-feather-alt"></i></button>
+        </div>
+      </div>
+      <button class="slider-btn btn-left" id="revLeft"><i class="fas fa-chevron-left"></i></button>
+      <button class="slider-btn btn-right" id="revRight"><i class="fas fa-chevron-right"></i></button>
+    </div>
+  </section>
+
+  <section class="contacts fade-up">
+    <h2>✨ Связь & запись</h2>
+    <p style="margin: 10px 0;"><i class="fas fa-phone-alt"></i> <a href="tel:+79157615253" class="phone-link">+7 (915) 761-52-53</a></p>
+    <div class="social-flex">
+      <a class="btn" href="https://t.me/Zanna_KSBD" target="_blank"><i class="fab fa-telegram"></i> Telegram: @Zanna_KSBD</a>
+      <a class="btn" href="https://vk.com/zhannaladka" target="_blank"><i class="fab fa-vk"></i> VK: zhannaladka</a>
+      <a class="btn" href="https://vk.ru/zhannaladka" target="_blank"><i class="fas fa-calendar-check"></i> Онлайн-запись</a>
+    </div>
+  </section>
+
+  <div class="footer">
+    <i class="fas fa-moon"></i> Жанна Федорина · Целостный подход к Душе и Телу · 2026
   </div>
+</div>
 
-  <!-- Скрипт для раскрытия отзывов -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Для каждого слайда с отзывом
-      document.querySelectorAll('.slide').forEach(slide => {
-        const short = slide.querySelector('.testimonial-short');
-        const full = slide.querySelector('.testimonial-full');
-        const closeBtn = full.querySelector('.close-full');
+<div id="reviewModal" class="modal">
+  <div class="modal-content">
+    <span class="modal-close">&times;</span>
+    <h3>💫 Полный отзыв</h3>
+    <p id="modalFullText" style="margin-top: 20px; white-space: pre-wrap; line-height: 1.6;"></p>
+  </div>
+</div>
 
-        // Клик по краткому тексту — показать полный, скрыть краткий
-        short.addEventListener('click', (e) => {
-          e.stopPropagation();
-          short.style.display = 'none';
-          full.style.display = 'block';
-        });
-
-        // Клик по кнопке "Свернуть" — скрыть полный, показать краткий
-        closeBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          full.style.display = 'none';
-          short.style.display = 'inline-block';  // возвращаем как было
-        });
-      });
+<script>
+  const canvas = document.getElementById('particles-canvas');
+  let ctx = canvas.getContext('2d');
+  let particles = [];
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+  for (let i = 0; i < 70; i++) {
+    particles.push({
+      x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+      radius: Math.random() * 2.5 + 1, alpha: Math.random() * 0.5 + 0.2,
+      vx: (Math.random() - 0.5) * 0.25, vy: (Math.random() - 0.5) * 0.2
     });
-  </script>
+  }
+  function drawParticles() {
+    if (!ctx) return;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let p of particles) {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(210, 160, 110, ${p.alpha * 0.8})`;
+      ctx.shadowBlur = 6;
+      ctx.shadowColor = '#d4a373';
+      ctx.fill();
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0) p.x = canvas.width;
+      if (p.x > canvas.width) p.x = 0;
+      if (p.y < 0) p.y = canvas.height;
+      if (p.y > canvas.height) p.y = 0;
+    }
+    requestAnimationFrame(drawParticles);
+  }
+  drawParticles();
+
+  const faders = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('revealed'); });
+  }, { threshold: 0.15 });
+  faders.forEach(el => observer.observe(el));
+
+  function initSlider(sliderId, leftId, rightId) {
+    const slider = document.getElementById(sliderId);
+    if(!slider) return;
+    const left = document.getElementById(leftId);
+    const right = document.getElementById(rightId);
+    const step = () => slider.clientWidth * 0.9;
+    if(left) left.onclick = () => slider.scrollBy({ left: -step(), behavior: 'smooth' });
+    if(right) right.onclick = () => slider.scrollBy({ left: step(), behavior: 'smooth' });
+  }
+  initSlider('docsSlider', 'docsLeft', 'docsRight');
+  initSlider('reviewsSlider', 'revLeft', 'revRight');
+
+  const docImgs = document.querySelectorAll('.doc-img');
+  const lightbox = document.createElement('div');
+  lightbox.className = 'modal';
+  lightbox.id = 'docLightbox';
+  lightbox.innerHTML = `<div class="modal-content" style="max-width: 80vw; text-align:center;"><span class="modal-close" id="docLbClose">&times;</span><img id="lbImg" style="max-width:100%; border-radius:24px;"></div>`;
+  document.body.appendChild(lightbox);
+  const lbImg = document.getElementById('lbImg');
+  docImgs.forEach(img => {
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', () => {
+      lbImg.src = img.src;
+      lightbox.style.display = 'flex';
+    });
+  });
+  document.getElementById('docLbClose')?.addEventListener('click', () => lightbox.style.display = 'none');
+  lightbox.addEventListener('click', (e) => { if(e.target === lightbox) lightbox.style.display = 'none'; });
+
+  const modal = document.getElementById('reviewModal');
+  const modalText = document.getElementById('modalFullText');
+  const closeModalBtn = modal.querySelector('.modal-close');
+  const openModal = (text) => {
+    modalText.innerText = text;
+    modal.style.display = 'flex';
+  };
+  closeModalBtn.onclick = () => modal.style.display = 'none';
+  modal.onclick = (e) => { if(e.target === modal) modal.style.display = 'none'; };
+  document.querySelectorAll('.read-more-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const slideDiv = btn.closest('.slide');
+      const full = slideDiv.getAttribute('data-full');
+      if(full) openModal(full);
+      else openModal("Благодарность мастеру, полный отзыв можно уточнить лично ✨");
+    });
+  });
+
+  const topBtn = document.getElementById('scrollTopBtn');
+  window.addEventListener('scroll', () => {
+    if(window.scrollY > 400) topBtn.classList.add('show');
+    else topBtn.classList.remove('show');
+  });
+  topBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+</script>
 </body>
 </html>
+```
